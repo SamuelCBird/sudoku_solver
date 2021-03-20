@@ -1,0 +1,105 @@
+/* latin */
+@font-face {
+    font-family: 'Oxygen';
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+    src: url(https://fonts.gstatic.com/s/oxygen/v10/2sDcZG1Wl4LcnbuCNWgzaGW5Kb8VZA.woff2) format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  }
+
+.light_bg {
+    background-color: var(--light-background-colour);
+}
+.dark_bg {
+    background-color: var(--dark-background-colour);
+}
+
+#whole_page {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    align-content: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+#sudoku_container {
+    position: relative;
+    display: flex;
+    width: 534px;
+    flex-wrap: wrap;
+    align-self: center;
+}
+
+#sudoku_container div {
+    box-sizing: content-box;
+    width: 50px;
+    height: 50px;
+    margin: 2px;
+    background-color: hsl(0, 05%, 65%);
+    display: flex;
+    line-height: 50px;
+    justify-content: center;
+    font-family: 'Oxygen', sans-serif;
+    font-size: 1.6rem;
+    color: hsl(0, 2%, 15%);
+}
+#sudoku_container div:nth-child(3n) {
+    margin-right: 6px;
+}
+#sudoku_container div:nth-child(19), #sudoku_container div:nth-child(47) {
+    margin-bottom: 6px;
+}
+#sudoku_container div:focus {
+    outline: none;
+}
+#theme_switcher {
+    position: absolute;
+    right: 0;
+}
+button:focus {
+    outline: none;
+}
+button {
+    display: flex;
+    align-self: center;
+    background: none;
+    margin: 50px;
+    padding: 20px 40px;
+    border: none;
+    border-radius: 50px;
+    font-size: 1.1rem;
+}
+.error {
+    background-color: hsl(0, 57%, 58%) !important;
+}
+.button_light_theme {
+    color: hsl(0, 25%, 65%);
+    box-shadow: 10px 10px 20px var(--light-shadow-dark-side), -10px -10px 20px var(--light-shadow-light-side);
+    color: var(--light-text-colour);
+}
+.button_light_theme:active {
+    background: linear-gradient(145deg, var(--light-shadow-dark-side), var(--light-shadow-light-side));
+}
+.button_dark_theme {
+    box-shadow: 10px 10px 20px var(--dark-shadow-dark-side), -10px -10px 20px var(--dark-shadow-light-side);
+    background: var(--dark-background-colour);
+    color: var(--light-background-colour);
+}
+.button_dark_theme:active {
+    background: linear-gradient(145deg, var(--dark-shadow-dark-side), var(--dark-shadow-light-side));
+}
+
+:root {
+    /* light theme */
+    --light-background-colour: hsl(0, 0%, 87%);
+    --light-shadow-dark-side: hsl(0, 5%, 75%);
+    --light-shadow-light-side: hsl(0, 15%, 95%);
+    --light-text-colour: hsl(0, 2%, 25%);
+    /* dark theme */
+    --dark-background-colour: hsl(0, 2%, 35%);
+    --dark-shadow-dark-side: hsl(0, 2%, 25%);
+    --dark-shadow-light-side: hsl(0, 2%, 40%);
+
+}
