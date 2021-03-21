@@ -16,26 +16,31 @@ const toggleTheme = () => {
     themeButton.innerText === 'go dark' ? themeButton.innerText = 'go light' : themeButton.innerText = 'go dark';
 };
 themeButton.addEventListener('click', toggleTheme);
-// put divs in array, and make divs editable.
+// create divs, put in array
 const sudokuContainer = document.getElementById('sudoku_container');
 const divArray = [];
-for (let i = 0; i < sudokuContainer.childElementCount; i += 1) {
-    const currentElement = sudokuContainer.children[i];
-    currentElement.contentEditable = "true";
-    currentElement.addEventListener('focus', (e) => {
-        // not working right yet.
-        if (currentElement.innerText == ' ') {
-            if (currentElement.classList.contains('error')) {
-                currentElement.classList.remove('error');
+for (let i = 0; i < 81; i++) {
+    const elem = document.createElement('div');
+    elem.contentEditable = 'true';
+    elem.addEventListener('input', () => {
+        if (elem.innerText == '') {
+            if (elem.classList.contains('error')) {
+                elem.classList.remove('error');
             }
         }
-        if (/\D/.test(currentElement.innerText)) {
-            currentElement.classList.add('error');
+        if (/\D/.test(elem.innerText)) {
+            elem.classList.add('error');
             console.log('yo');
         }
+        else if (elem.innerText.length >= 2) {
+            elem.classList.add('error');
+        }
         else {
-            console.log('hey');
+            if (elem.classList.contains('error')) {
+                elem.classList.remove('error');
+            }
         }
     });
-    divArray.push(currentElement);
+    divArray.push([elem, '']);
+    sudokuContainer.append(elem);
 }
