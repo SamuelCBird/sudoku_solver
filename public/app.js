@@ -22,11 +22,20 @@ const divArray = [];
 for (let i = 0; i < sudokuContainer.childElementCount; i += 1) {
     const currentElement = sudokuContainer.children[i];
     currentElement.contentEditable = "true";
-    currentElement.addEventListener('input', () => {
+    currentElement.addEventListener('focus', (e) => {
         // not working right yet.
-        if (!/\d /.test(currentElement.innerText)) {
-            currentElement.classList.add('error');
+        if (currentElement.innerText == ' ') {
+            if (currentElement.classList.contains('error')) {
+                currentElement.classList.remove('error');
+            }
         }
-        divArray.push(currentElement);
+        if (/\D/.test(currentElement.innerText)) {
+            currentElement.classList.add('error');
+            console.log('yo');
+        }
+        else {
+            console.log('hey');
+        }
     });
+    divArray.push(currentElement);
 }
