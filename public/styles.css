@@ -8,6 +8,10 @@
     unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
   }
 
+body {
+    font-family: 'Oxygen', sans-serif;
+}
+
 .light_bg {
     background-color: var(--light-background-colour);
 }
@@ -40,7 +44,6 @@
     display: flex;
     line-height: 45px;
     justify-content: center;
-    font-family: 'Oxygen', sans-serif;
     font-size: 1.6rem;
     color: hsl(0, 2%, 15%);
 }
@@ -69,10 +72,20 @@ button {
     padding: 20px 40px;
     border: none;
     border-radius: 50px;
+    font-family: 'Oxygen', sans-serif;
     font-size: 1.1rem;
 }
-.error {
-    background-color: hsl(0, 57%, 58%) !important;
+#error_message p {
+    display: flex;
+    justify-content: center;
+    align-self: center;
+    min-width: 100px;
+    padding: 28px;
+    border-radius: 30px;
+    background-color: var(--error-colour);
+}
+.invalid {
+    background-color: var(--error-colour) !important;
 }
 .button_light_theme {
     color: hsl(0, 25%, 65%);
@@ -101,5 +114,7 @@ button {
     --dark-background-colour: hsl(0, 2%, 35%);
     --dark-shadow-dark-side: hsl(0, 2%, 25%);
     --dark-shadow-light-side: hsl(0, 2%, 40%);
+
+    --error-colour: hsl(0, 57%, 58%);
 
 }

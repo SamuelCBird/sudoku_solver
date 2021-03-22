@@ -1,48 +1,38 @@
-// light / dark theme
-const body = document.querySelector('body')!;
-const themeButton = document.querySelector('#theme_switcher') as HTMLButtonElement;
-const allButtons = document.querySelectorAll('button');
+import { solveSudoku } from './functions/solve_sudoku.js';
+import { toggleTheme } from './functions/toggle_theme.js';
+import { themeButton, sudokuContainer, NumberType, solveButton, divArray, errorMessageDiv } from './GlobalVariables.js';
 
-const toggleTheme = (): void => {
-    // bg colour
-    body.classList.toggle('dark_bg')
-    body.classList.toggle('light_bg')
-    // buttons
-    allButtons.forEach(button => {
-        button.classList.toggle('button_dark_theme');
-        button.classList.toggle('button_light_theme');
-    })
-    // toggle theme button text
-    themeButton.innerText === 'go dark' ? themeButton.innerText = 'go light' : themeButton.innerText = 'go dark' ;
-}
-
+// toggle theme
 themeButton.addEventListener('click', toggleTheme);
+solveButton.addEventListener('click', () => {
+    divArray.forEach(div => {
+        // create error for when there is invalid input
+        solveSudoku();
+    })
+});
 
-
-// create divs, put in array
-const sudokuContainer = document.getElementById('sudoku_container')!;
-const divArray: Array<[HTMLDivElement, string]> = [];
-
+// create divs
 for (let i = 0; i < 81; i++) {
     const elem = document.createElement('div');
     elem.contentEditable = 'true';
+
+    // check for valid input
     elem.addEventListener('input', () => {
         if (elem.innerText == '') {
-            if (elem.classList.contains('error')) {
-                elem.classList.remove('error');
+            if (elem.classList.contains('invalid')) {
+                elem.classList.remove('invalid');
             }
         }
         if (/\D/.test(elem.innerText)) {
-            elem.classList.add('error');
-            console.log('yo')
+            elem.classList.add('invalid');
         } else if (elem.innerText.length >= 2) {
-            elem.classList.add('error');
+            elem.classList.add('invalid');
         } else {
-            if (elem.classList.contains('error')) {
-                elem.classList.remove('error');
+            if (elem.classList.contains('invalid')) {
+                elem.classList.remove('invalid');
             } 
         }
     })
-    divArray.push([elem, '']);
+    divArray.push([elem, NumberType.empty]);
     sudokuContainer.append(elem);
 }
