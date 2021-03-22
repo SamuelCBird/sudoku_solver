@@ -6,7 +6,10 @@ export const sudokuContainer = document.getElementById('sudoku_container') as HT
 export const errorMessageDiv = document.querySelector('error_message') as HTMLDivElement;
 
 // array to hold sudoku divs, NumberType to hold whether number was preset or not
-export const divArray: Array<[HTMLDivElement, NumberType]> = [];
+export type PuzzleArrayType = Array<[HTMLDivElement, NumberType]>;
+export type PuzzleSquare = [HTMLDivElement, NumberType];
+
+export const puzzleArray: PuzzleArrayType = [];
 
 export enum NumberType {
     locked,

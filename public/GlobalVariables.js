@@ -4,8 +4,7 @@ export const solveButton = document.querySelector('#solve_button');
 export const allButtons = document.querySelectorAll('button');
 export const sudokuContainer = document.getElementById('sudoku_container');
 export const errorMessageDiv = document.querySelector('error_message');
-// array to hold sudoku divs, NumberType to hold whether number was preset or not
-export const divArray = [];
+export const puzzleArray = [];
 export var NumberType;
 (function (NumberType) {
     NumberType[NumberType["locked"] = 0] = "locked";

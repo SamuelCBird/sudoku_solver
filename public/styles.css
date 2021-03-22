@@ -103,6 +103,9 @@ button {
 .button_dark_theme:active {
     background: linear-gradient(145deg, var(--dark-shadow-dark-side), var(--dark-shadow-light-side));
 }
+.active_square {
+    background-color: var(--active-colour) !important;
+}
 
 :root {
     /* light theme */
@@ -115,6 +118,7 @@ button {
     --dark-shadow-dark-side: hsl(0, 2%, 25%);
     --dark-shadow-light-side: hsl(0, 2%, 40%);
 
+    --active-colour: hsl(106, 57%, 58%);
     --error-colour: hsl(0, 57%, 58%);
 
 }

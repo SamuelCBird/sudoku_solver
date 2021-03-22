@@ -1,15 +1,12 @@
-import { solveSudoku } from './functions/solve_sudoku.js';
-import { toggleTheme } from './functions/toggle_theme.js';
-import { themeButton, sudokuContainer, NumberType, solveButton, divArray, errorMessageDiv } from './GlobalVariables.js';
+import { handleSolution } from './functions/handleSolution.js';
+import { toggleTheme } from './functions/toggleTheme.js';
+import { themeButton, sudokuContainer, NumberType, solveButton, puzzleArray } from './GlobalVariables.js';
 
 // toggle theme
 themeButton.addEventListener('click', toggleTheme);
-solveButton.addEventListener('click', () => {
-    divArray.forEach(div => {
-        // create error for when there is invalid input
-        solveSudoku();
-    })
-});
+solveButton.addEventListener('click', handleSolution);
+
+
 
 // create divs
 for (let i = 0; i < 81; i++) {
@@ -33,6 +30,6 @@ for (let i = 0; i < 81; i++) {
             } 
         }
     })
-    divArray.push([elem, NumberType.empty]);
+    puzzleArray.push([elem, NumberType.empty]);
     sudokuContainer.append(elem);
 }
