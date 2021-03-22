@@ -15,7 +15,7 @@ for (let i = 0; i < 81; i++) {
 
     // check for valid input
     elem.addEventListener('input', () => {
-        if (elem.innerText == '') {
+        if (elem.innerText === '') {
             if (elem.classList.contains('invalid')) {
                 elem.classList.remove('invalid');
             }
