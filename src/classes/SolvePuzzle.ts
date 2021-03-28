@@ -55,19 +55,24 @@ export class SolvePuzzle {
         let targetBlock: number;
         // get the right block of 9
         for (let j = 0; j < blockCornerNumbers.length; j++) {
-            for (let k = blockCornerNumbers[j]; k < (blockCornerNumbers[j] + 20); k + 9) {
+            if (targetBlock! != null) { break; }
+            for (let k = blockCornerNumbers[j]; k < (blockCornerNumbers[j] + 20); k += 9) {
+                if (targetBlock! != null) { break; }
                 for (let m = k; m < k + 3; m++) {
                     if (index === m) {
                         targetBlock = blockCornerNumbers[j];
+                        break;
                     }
                 }
             }
         }
         // check for number
-        for (let k = targetBlock!; k < (k + 21); k + 9){
+        for (let k = targetBlock!; k < targetBlock! + 21; k += 9){
             for (let m = k; m < k + 3; m++) {
-                if (parseInt(value.innerText) === m) {
-                    return false;
+                if (value != this.puzzle[m][0]) {
+                    if (value.innerText === this.puzzle[m][0].innerText) {
+                        return false;
+                    }
                 }
             }
         }
@@ -104,19 +109,16 @@ export class SolvePuzzle {
 
     insertNumber(square: HTMLDivElement, index: number): boolean {
         let newNumber: number;
-        if (!square.innerText) {
-            newNumber = 0;
-        } else {
+        if (square.innerText) {
             newNumber = parseInt(square.innerText);
-        }
-        if (newNumber < 9) {
-            newNumber += 1;
         } else {
-            return false;
+            newNumber = 1;
         }
-        square.innerText = newNumber.toString();
-        if (this.isValid(square, index)) {
-            return true;
+        for (newNumber; newNumber <= 9; newNumber++) {
+            square.innerText = newNumber.toString();
+            if (this.isValid(square, index)) {
+                return true;
+            }
         }
         return false;
     }
