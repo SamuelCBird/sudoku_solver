@@ -1,5 +1,5 @@
 import { SolvePuzzle } from "../classes/SolvePuzzle.js";
-import { puzzleArray } from "../GlobalVariables.js"
+import { NumberType, puzzleArray } from "../GlobalVariables.js"
 
 export const handleSolution = () => {
     for (let i = 0; i < puzzleArray.length; i++) {
@@ -10,16 +10,24 @@ export const handleSolution = () => {
     }
     puzzleArray.forEach(square => {
         square[0].contentEditable = 'false';
-    })
-    let worker;
-    if (window.Worker) {
-        worker = new Worker('workers/worker.js');
-        worker.onmessage = (message) => {
-            console.log(message);
+
+        if (square[0].innerText !== '') {
+            square[1] = NumberType.locked;
+            console.log('boom')
         }
-        worker.postMessage({ 
-            'solvePuzzle': JSON.stringify(SolvePuzzle),
-            'puzzleArray': JSON.stringify(puzzleArray) 
-        });
-    }
+    })
+
+    const solution = new SolvePuzzle(puzzleArray);
+
+    // let worker;
+    // if (window.Worker) {
+    //     worker = new Worker('workers/worker.js');
+    //     worker.onmessage = (message) => {
+    //         console.log(message);
+    //     }
+    //     worker.postMessage({ 
+    //         'solvePuzzle': JSON.stringify(SolvePuzzle),
+    //         'puzzleArray': JSON.stringify(puzzleArray) 
+    //     });
+    // }
 }
