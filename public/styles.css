@@ -106,6 +106,9 @@ button {
 .active_square {
     background-color: var(--active-colour) !important;
 }
+.active_checking_square {
+    background-color: hsl(268, 57%, 58%) !important;
+}
 
 :root {
     /* light theme */

@@ -13,17 +13,21 @@ export class SolvePuzzle {
         }
         else {
             while (i % 9 != 0) {
+                console.log(i);
                 i -= 1;
             }
         }
         let slice = this.puzzle.slice(i, i + 9);
         for (let j = 0; j < slice.length; j++) {
+            slice[j][0].classList.toggle('active_checking_square');
             if (value != slice[j][0]) {
                 if (value.innerText === slice[j][0].innerText) {
                     // console.log(`${value.innerText} / ${elem[0].innerText}`)
+                    slice[j][0].classList.toggle('active_checking_square');
                     return false;
                 }
             }
+            slice[j][0].classList.toggle('active_checking_square');
         }
         return true;
     }
@@ -36,11 +40,14 @@ export class SolvePuzzle {
             }
         }
         for (i; i <= this.puzzle.length - 1; i += 9) {
+            this.puzzle[i][0].classList.toggle('active_checking_square');
             if (value != this.puzzle[i][0]) {
                 if (value.innerText === this.puzzle[i][0].innerText) {
+                    this.puzzle[i][0].classList.toggle('active_checking_square');
                     return false;
                 }
             }
+            this.puzzle[i][0].classList.toggle('active_checking_square');
         }
         return true;
     }
@@ -68,11 +75,14 @@ export class SolvePuzzle {
         // check for number
         for (let k = targetBlock; k < targetBlock + 21; k += 9) {
             for (let m = k; m < k + 3; m++) {
+                this.puzzle[m][0].classList.toggle('active_checking_square');
                 if (value != this.puzzle[m][0]) {
                     if (value.innerText === this.puzzle[m][0].innerText) {
+                        this.puzzle[m][0].classList.toggle('active_checking_square');
                         return false;
                     }
                 }
+                this.puzzle[m][0].classList.toggle('active_checking_square');
             }
         }
         return true;
@@ -81,19 +91,23 @@ export class SolvePuzzle {
         let i = 0;
         while (i < this.puzzle.length) {
             console.log(i);
-            // this.puzzle[i][0].classList.add('active_square')
+            this.puzzle[i][0].classList.toggle('active_square');
             if (this.squareIsEditable(this.puzzle[i])) {
                 if (this.insertNumber(this.puzzle[i][0], i)) {
+                    this.puzzle[i][0].classList.toggle('active_square');
                     i += 1;
                 }
                 else {
+                    this.puzzle[i][0].classList.toggle('active_square');
                     i -= 1;
                 }
             }
             else {
+                this.puzzle[i][0].classList.toggle('active_square');
                 i += 1;
             }
         }
+        console.log('COMPLETE');
     }
     isValid(value, index) {
         if (this.checkHorizontalValidity(value, index)) {
@@ -111,13 +125,17 @@ export class SolvePuzzle {
             newNumber = parseInt(square.innerText);
         }
         else {
-            newNumber = 1;
+            newNumber = 0;
         }
+        newNumber += 1;
         for (newNumber; newNumber <= 9; newNumber++) {
             square.innerText = newNumber.toString();
             if (this.isValid(square, index)) {
                 return true;
             }
+        }
+        if (square.innerText === '9') {
+            square.innerText = '';
         }
         return false;
     }
