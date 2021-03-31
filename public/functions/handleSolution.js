@@ -11,19 +11,8 @@ export const handleSolution = () => {
         square[0].contentEditable = 'false';
         if (square[0].innerText !== '') {
             square[1] = NumberType.locked;
-            console.log('boom');
         }
     });
     const solution = new SolvePuzzle(puzzleArray);
-    // let worker;
-    // if (window.Worker) {
-    //     worker = new Worker('workers/worker.js');
-    //     worker.onmessage = (message) => {
-    //         console.log(message);
-    //     }
-    //     worker.postMessage({ 
-    //         'solvePuzzle': JSON.stringify(SolvePuzzle),
-    //         'puzzleArray': JSON.stringify(puzzleArray) 
-    //     });
-    // }
+    // possibly use worker to add counter and time solution
 };

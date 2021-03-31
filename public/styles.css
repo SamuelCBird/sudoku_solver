@@ -10,8 +10,13 @@
 
 body {
     font-family: 'Oxygen', sans-serif;
+    margin: 0;
 }
-
+header {
+    width: 100%;
+    height: 30px;
+    background: var(--light-background-colour);
+}
 .light_bg {
     background-color: var(--light-background-colour);
 }

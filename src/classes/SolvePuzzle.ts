@@ -2,7 +2,9 @@ import { PuzzleArrayType, PuzzleSquare, NumberType } from "../GlobalVariables.js
 
 export class SolvePuzzle {
     constructor (private puzzle: PuzzleArrayType) {
+        console.time('sudoku');
         this.startSolution();
+        console.timeEnd('sudoku');
     };
 
     checkHorizontalValidity(value: HTMLDivElement, index: number): boolean {
@@ -11,7 +13,6 @@ export class SolvePuzzle {
             i = 0;
         } else {
             while (i % 9 !== 0) {
-                console.log(i);
                 i -= 1;
             }
         }
@@ -21,7 +22,6 @@ export class SolvePuzzle {
             slice[j][0].classList.toggle('active_checking_square');
             if (value !== slice[j][0]) {
                 if (value.innerText === slice[j][0].innerText) {
-                    // console.log(`${value.innerText} / ${elem[0].innerText}`)
                     slice[j][0].classList.toggle('active_checking_square');
                     return false;
                 }
@@ -64,16 +64,18 @@ export class SolvePuzzle {
             [57, 58, 59, 66, 67, 68, 75, 76, 77],
             [60, 61, 62, 69, 70, 71, 78, 79, 80]
         ]
+        // holds index of block
         let targetBlock: number;
         for (let j = 0; j < block.length; j++) {
-            if (!targetBlock!) { break; }
+            if (targetBlock! === null) { break; }
             for (let k = 0; k < block[j].length; k++) {
                 if (index === block[j][k]) {
-                    targetBlock = block[j][0];
+                    targetBlock = j;
                     break;
                 }
             }
         }
+        
         for (let j = 0; j < block[targetBlock!].length; j++) {
             if (this.puzzle[block[targetBlock!][j]][0] !== value) {
                 if (this.puzzle[block[targetBlock!][j]][0].innerText === value.innerText) {
@@ -81,70 +83,38 @@ export class SolvePuzzle {
                 }
             }
         }
-        return true;
 
-    //     const blockCornerNumbers = [0, 3, 6, 27, 30, 33, 54, 57, 60];
-    //     let targetBlock: number;
-    //     // get the right block of 9
-    //     for (let j = 0; j < blockCornerNumbers.length; j++) {
-    //         if (targetBlock! !== null) { break; }
-    //         for (let k = blockCornerNumbers[j]; k < (blockCornerNumbers[j] + 20); k += 9) {
-    //             if (targetBlock! !== null) { break; }
-    //             for (let m = k; m < k + 3; m++) {
-    //                 if (index === m) {
-    //                     targetBlock = blockCornerNumbers[j];
-    //                     break;
-    //                 } 
-    //                 else {
-    //                     console.log('bad')
-    //                 }
-    //             }
-    //         }
-    //     }
-    //     // check for number
-    //     for (let k = targetBlock!; k < targetBlock! + 21; k += 9){
-    //         for (let m = k; m < k + 3; m++) {
-    //             this.puzzle[m][0].classList.toggle('active_checking_square');
-    //             if (value !== this.puzzle[m][0]) {
-    //                 if (value.innerText === this.puzzle[m][0].innerText) {
-    //                     this.puzzle[m][0].classList.toggle('active_checking_square');
-    //                     return false;
-    //                 }
-    //             }
-    //             this.puzzle[m][0].classList.toggle('active_checking_square');
-    //         }
-    //     }
-    //     return true;
+        return true;
     }
 
     startSolution(): void {
         let index = 0;
         let previousIndex: number;
-        while (index < this.puzzle.length) {
-            console.log(index)
-            this.puzzle[index][0].classList.toggle('active_square');
+        let intervalLoop = setInterval(() => {
+
+            if (index >= 80) {
+                clearInterval(intervalLoop);
+            }
             if (this.squareIsEditable(this.puzzle[index])) {
                 if (this.insertNumber(this.puzzle[index][0], index)) {
-                    this.puzzle[index][0].classList.toggle('active_square');
                     previousIndex = index;
                     index += 1;
                 } else {
-                    this.puzzle[index][0].classList.toggle('active_square');
                     previousIndex = index;
                     index -= 1;
                 }
             } else {
-                this.puzzle[index][0].classList.toggle('active_square');
                 if (previousIndex! !== null) {
                     if (previousIndex! === index + 1) {
+                        previousIndex = index;
                         index -= 1;
+                    } else {
+                        previousIndex = index;
+                        index += 1;
                     }
-                }
-                previousIndex = index;
-                index += 1;
+                } 
             }
-        }
-        console.log('COMPLETE');
+        }, 10)
     }
 
     isValid(value: HTMLDivElement, index: number): boolean {
