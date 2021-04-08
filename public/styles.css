@@ -11,11 +11,8 @@
 body {
     font-family: 'Oxygen', sans-serif;
     margin: 0;
-}
-header {
+    height: 100vh;
     width: 100%;
-    height: 30px;
-    background: var(--light-background-colour);
 }
 .light_bg {
     background-color: var(--light-background-colour);
@@ -25,45 +22,55 @@ header {
 }
 
 #whole_page {
-    display: flex;
+    display: grid;
+    grid-template-rows: 1fr 2fr 1fr;
     width: 100%;
-    height: 100%;
+    height: 100vh;
     align-content: center;
     flex-direction: column;
 }
 
 #sudoku_container {
+    grid-auto-columns: minmax(355px, auto);
+    margin: 10px;
     position: relative;
     display: flex;
-    width: 447px;
+    width: var(--full-board-size);
+    height: var(--full-board-size);
+    grid-row: 2 / 3;
     flex-wrap: wrap;
     align-self: center;
+    justify-self: center;
 }
 
-#sudoku_container div {
+#sudoku_container div {    
     box-sizing: content-box;
-    width: 45px;
-    height: 45px;
-    margin: 2px;
+    width: var(--element-size);
+    height: var(--element-size);
+    margin: var(--element-margin);
     background-color: hsl(0, 05%, 65%);
     display: flex;
-    line-height: 45px;
+    line-height: var(--element-size);
     justify-content: center;
-    font-size: 1.6rem;
+    font-size: 1.2rem;
     color: hsl(0, 2%, 15%);
 }
 #sudoku_container div:nth-child(3n) {
-    margin-right: 4px;
+    margin-right: var(--block-divider);
 }
 #sudoku_container div:nth-child(19), #sudoku_container div:nth-child(47) {
-    margin-bottom: 4px;
+    margin-bottom: var(--block-divider);
 }
 #sudoku_container div:focus {
     outline: none;
 }
-/* Theme Selector Button */
-button:nth-child(1) {
-    align-self: flex-end;
+#buttons {
+    display: grid;
+    grid-row: 3 / 4;
+    grid-template-columns: 1fr 1fr;
+}
+#theme_switcher, #solve_button {
+    justify-self: flex-end;
 }
 button:focus {
     outline: none;
@@ -73,12 +80,14 @@ button {
     display: flex;
     align-self: center;
     background: none;
+    width: 200px;
     margin: 50px;
     padding: 20px 40px;
     border: none;
     border-radius: 50px;
     font-family: 'Oxygen', sans-serif;
     font-size: 1.1rem;
+    justify-content: center;
 }
 #error_message p {
     display: flex;
@@ -128,5 +137,28 @@ button {
 
     --active-colour: hsl(106, 57%, 58%);
     --error-colour: hsl(0, 57%, 58%);
-
+    /* sudoku elements */
+    --element-size: 40px;
+    --element-margin: 2px;
+    --full-board-size: calc(var(--element-size)*9 + var(--element-margin)*25);
+    --block-divider: 6px;
+}
+@media only screen and (max-width: 450px) {
+    #buttons {
+        grid-template-columns: 1fr;
+        /* grid-template-rows: 1fr; */
+    }
+    #buttons > * {
+        justify-self: center;
+    }
+    button {
+        font-size: 0.8rem;
+        width: 150px;
+        padding: 10px 20px;
+        margin: 10px;
+    }
+    :root {
+        --element-size: 30px;
+        --element-margin: 2px;
+    }
 }
