@@ -1,5 +1,5 @@
 export const body = document.querySelector('body');
-export const themeButton = document.querySelector('#theme_switcher');
+// export const themeButton = document.querySelector('#theme_switcher') as HTMLButtonElement;
 export const solveButton = document.querySelector('#solve_button');
 export const allButtons = document.querySelectorAll('button');
 export const sudokuContainer = document.getElementById('sudoku_container');

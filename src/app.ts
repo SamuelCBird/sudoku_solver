@@ -1,9 +1,9 @@
 import { handleSolution } from './functions/handleSolution.js';
-import { toggleTheme } from './functions/toggleTheme.js';
-import { themeButton, sudokuContainer, NumberType, solveButton, puzzleArray } from './GlobalVariables.js';
+// import { toggleTheme } from './functions/toggleTheme.js';
+import { sudokuContainer, NumberType, solveButton, puzzleArray } from './GlobalVariables.js';
 
 // toggle theme
-themeButton.addEventListener('click', toggleTheme);
+// themeButton.addEventListener('click', toggleTheme);
 solveButton.addEventListener('click', handleSolution);
 
 
