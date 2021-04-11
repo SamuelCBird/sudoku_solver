@@ -9,30 +9,38 @@
   }
 
 body {
-    background: url(./images/light_squares.svg);
-    background-size: cover;
+    color: #42486E;
     background-repeat: no-repeat;
     font-family: 'Oxygen', sans-serif;
     margin: 0;
     width: 100%;
 }
-/* .light_bg {
-    background-color: var(--light-background-colour);
+.light_bg {
+    background: url(./images/light_squares.svg);
+    background-size: cover;
 }
 .dark_bg {
-    background-color: var(--dark-background-colour);
-} */
+    background: url(./images/dark_squares.svg);
+    background-size: cover;
+}
+.light_button_bg {
+    background: var(--light_bg);
+}
+.dark_button_bg {
+    background: var(--dark_bg);
+}
 header {
-    height: 70px;
-    max-width: 100%;
-    margin-bottom: 60px;
+    position: relative;
+    height: 100px;
+    min-width: var(--full-board-size);
+    margin-bottom: 100px;
     background: #efefef;
 }
 header div {
     display: grid;
-    grid-template-columns: 4fr 1fr;
+    grid-template-columns: 5fr 1fr;
     margin: 0 auto;
-    height: 70px;
+    height: 100px;
     max-width: 850px;
     align-items: center;
     padding-left: 20px; 
@@ -44,17 +52,18 @@ header h1 {
     color:hsl(0, 2%, 15%);
     font-size: 1.2rem;
 }
+header input {
+    justify-self: center;
+}
 #whole_page {
     display: grid;
-    grid-template-rows: 3fr 1fr;
+    grid-template-rows: 3fr 1fr 1fr;
     max-width: 850px;
     align-content: center;
     flex-direction: column;
     margin: 0 auto;
 }
-
 #sudoku_container {
-    background: #00142E;
     padding: 20px;
     margin: 10px;
     position: relative;
@@ -93,8 +102,13 @@ header h1 {
 #buttons {
     display: grid;
     grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
     grid-row: 2 / 3;
     margin: 0 auto;
+    align-content: center;
+}
+button {
+    grid-row: 2 / 3;
 }
 button {
     position: relative;
@@ -102,9 +116,8 @@ button {
     font-family: 'Oxygen', sans-serif;
     font-size: 1.1rem;
     font-style: oblique;
-    margin: 40px;
+    margin: 20px;
     border: none;
-    background: hsla(210, 57%, 51%, 1);
 }
 button, span {
     width: 120px;
@@ -130,29 +143,24 @@ button:focus {
     outline-style: solid;
     outline-color: #efefef;
 }
-#error_message p {
+#error_message {
     display: flex;
+    grid-column: span 2;
+    color: #fefefe;
     justify-content: center;
     align-self: center;
-    min-width: 100px;
-    padding: 28px;
+}
+#error_message p {
+    background: var(--error-colour);
+    padding: 20px;
     border-radius: 30px;
-    background-color: var(--error-colour);
 }
 .invalid {
     background-color: var(--error-colour) !important;
 }
 :root {
-    /* light theme */
-    --light-background-colour: hsl(0, 0%, 77%);
-    --light-shadow-dark-side: hsl(0, 5%, 75%);
-    --light-shadow-light-side: hsl(0, 15%, 95%);
-    --light-text-colour: hsl(0, 2%, 25%);
-    /* dark theme */
-    --dark-background-colour: hsl(0, 2%, 35%);
-    --dark-shadow-dark-side: hsl(0, 2%, 25%);
-    --dark-shadow-light-side: hsl(0, 2%, 40%);
-
+    --dark_bg: #42486E;
+    --light_bg: #B9C3DE;
     --error-colour: hsl(0, 57%, 58%);
     /* sudoku elements */
     --element-size: 40px;
@@ -161,8 +169,8 @@ button:focus {
     --block-divider: 6px;
 }
 @media only screen and (max-width: 550px) {
-    #buttons {
-        grid-template-columns: 1fr;
+    #whole_page {
+        grid-template-rows: 4fr 1fr 1fr;
     }
     #buttons > * {
         justify-self: center;
@@ -188,5 +196,11 @@ button:focus {
     }
     header div h1 {
         font-size: 0.9rem;
+    }
+}
+@media only screen and (max-width: 375px) {
+    :root {
+        --element-size: 20px;
+        --element-margin: 2px;
     }
 }

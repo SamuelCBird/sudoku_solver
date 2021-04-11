@@ -6,25 +6,25 @@
     <title>sudoku</title>
     <link rel="stylesheet" href="styles.css">
 </head>
-<body class='dark_bg'>
+<body class='light_bg'>
     <header>
         <div>
             <h1>Sam's Super Sudoky Solver</h1>
             <input type="checkbox" />
-        </div> 
+        </div>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1800 120" stroke-linejoin="round"><path d="M0 120L75 103.3C150 86.9 300 53.1 450 46.7 600 40 750 60 900 73.3 1050 86.9 1200 93.1 1350 93.3 1500 93.1 1650 86.9 1725 83.3L1800 80 1800 0 1725 0C1650 0 1500 0 1350 0 1200 0 1050 0 900 0 750 0 600 0 450 0 300 0 150 0 75 0L0 0 0 120Z" fill="#efefef"/></svg>
     </header>
     <div id='whole_page'>
 
         <!-- <button id='theme_switcher' class='button_dark_theme'>go light</button> -->
-        <div id='sudoku_container'>
+        <div id='sudoku_container' class='light_button_bg'>
            <!-- divs will be created and inserted with typescript -->
         </div>
         <div id='buttons'>
-            <button id='solve_button'><span>solve</span></button>
-            <button id='clear_button'><span>clear</span></button>
+            <!-- <div id='error_message'><p>Please enter a valid sudoku...</p></div> -->
+            <button id='solve_button' class='dark_button_bg'><span>solve</span></button>
+            <button id='clear_button' class='dark_button_bg'><span>clear</span></button>
         </div>  
-        <div id='error_message'></div>
-
     </div>
     <script type='module' src='app.js'></script>
 </body>

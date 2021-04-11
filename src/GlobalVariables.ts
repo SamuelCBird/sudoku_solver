@@ -1,5 +1,5 @@
 export const body = document.querySelector('body')!;
-// export const themeButton = document.querySelector('#theme_switcher') as HTMLButtonElement;
+export const themeCheckbox = document.querySelector('body > header > div > input[type=checkbox]') as HTMLInputElement;
 export const solveButton = document.querySelector('#solve_button') as HTMLButtonElement;
 export const allButtons = document.querySelectorAll('button');
 export const sudokuContainer = document.getElementById('sudoku_container') as HTMLDivElement;
