@@ -1,4 +1,4 @@
-import { body, sudokuContainer, allButtons } from '../GlobalVariables.js';
+import { body, sudokuContainer, allButtons, descriptionDiv } from '../GlobalVariables.js';
 export const toggleTheme = () => {
     const buttons = document.querySelectorAll('button');
     // bg colour
@@ -12,4 +12,7 @@ export const toggleTheme = () => {
         button.classList.toggle('light_button_bg');
         button.classList.toggle('dark_button_bg');
     });
+    // description
+    descriptionDiv.classList.toggle('light_mode');
+    descriptionDiv.classList.toggle('dark_mode');
 };

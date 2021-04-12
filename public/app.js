@@ -1,9 +1,12 @@
 import { handleSolution } from './functions/handleSolution.js';
 import { toggleTheme } from './functions/toggleTheme.js';
-import { themeCheckbox, sudokuContainer, NumberType, solveButton, puzzleArray } from './GlobalVariables.js';
-// toggle theme
-themeCheckbox.addEventListener('click', toggleTheme);
+import { themeButton, sudokuContainer, NumberType, solveButton, puzzleArray } from './GlobalVariables.js';
+// themeCheckbox.addEventListener('click', toggleTheme);
 solveButton.addEventListener('click', handleSolution);
+themeButton.addEventListener('click', () => {
+    themeButton.classList.toggle('isflipped');
+    toggleTheme();
+});
 // create divs
 for (let i = 0; i < 81; i++) {
     const elem = document.createElement('div');

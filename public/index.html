@@ -10,7 +10,13 @@
     <header>
         <div>
             <h1>Sam's Super Sudoky Solver</h1>
-            <input type="checkbox" />
+            <!-- <input type="checkbox" /> -->
+            <div id="theme_switcher">
+                <div id='card'>
+                    <div id='card_front' class='card_face'></div>
+                    <div id='card_back' class='card_face'></div>
+                </div>
+            </div>
         </div>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1800 120" stroke-linejoin="round"><path d="M0 120L75 103.3C150 86.9 300 53.1 450 46.7 600 40 750 60 900 73.3 1050 86.9 1200 93.1 1350 93.3 1500 93.1 1650 86.9 1725 83.3L1800 80 1800 0 1725 0C1650 0 1500 0 1350 0 1200 0 1050 0 900 0 750 0 600 0 450 0 300 0 150 0 75 0L0 0 0 120Z" fill="#efefef"/></svg>
     </header>
@@ -26,6 +32,37 @@
             <button id='clear_button' class='dark_button_bg'><span>clear</span></button>
         </div>  
     </div>
+    <div id="description" class='light_mode'>
+        <h1>The story of Sam's Super Sudoky Solver</h1>
+        <h2>A little background on me...</h2>
+        <p>
+            I'm an aspiring front end developer. I have been a professional musician but have decided to pursue a fascination in programming. I started off teaching myself
+            Python and most enjoyed recreating classic games like Snake, Tetris and Minesweeper. Then I discovered the excitement of working in React and creating beautiful web apps.
+        </p>
+        <h2>Why Sudoku?</h2>
+        <p>
+            I've always enjoyed a sudoku puzzle, and the logic behind solving one, and ever since learning to code making a sudoku solver was an ambition. After beginning to
+            familiarise myself with Typescript I thought it would be a good first project to build with with a basic <b>HTML / CSS / Typescript</b> stack, and a good chance to test my core
+            programming principles and algorithmic thinking.
+        </p>
+        <h2>How does your algorithm work?</h2>
+        <p>
+            I'm using the backtracking approach. Essentially; starting at the beginning of the puzzle, enter a number (starting at 1), check if it is valid with
+            the rest of the puzzle, if it is, move on, if it isn't enter the next number. If you get to a number 9 and it still isn't valid, then move back a square 
+            and try the next number in that box.
+        </p>
+        <p>
+            This is quite an expensive algorithm, because you are looping over the grid, and the numbers in each square thousands of times. 
+        </p>
+        <h2>Do you think you'll improve the algorithm?</h2>
+        <p>
+            This is probably the most complex algorithm I have worked on. It was challenging at times but I'm proud of it. That being said, I'm planning to keep working on it to 
+            find how and where I can improve the algorithm, which I will then upload as a version 2. 
+        </p>
+    </div>
+    <footer>
+        <p>samuelcbird 2021</p>
+    </footer>
     <script type='module' src='app.js'></script>
 </body>
 </html>
