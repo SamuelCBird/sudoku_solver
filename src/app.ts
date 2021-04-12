@@ -1,6 +1,7 @@
+import { clearBoard } from './functions/clearBoard.js';
 import { handleSolution } from './functions/handleSolution.js';
 import { toggleTheme } from './functions/toggleTheme.js';
-import { themeButton, sudokuContainer, NumberType, solveButton, puzzleArray } from './GlobalVariables.js';
+import { themeButton, sudokuContainer, NumberType, solveButton, puzzleArray, clearButton } from './GlobalVariables.js';
 
 // themeCheckbox.addEventListener('click', toggleTheme);
 solveButton.addEventListener('click', handleSolution);
@@ -8,6 +9,9 @@ themeButton.addEventListener('click', () => {
     themeButton.classList.toggle('isflipped');
     toggleTheme();
 })
+clearButton.addEventListener('click', () => {
+    clearBoard(puzzleArray);
+});
 
 
 

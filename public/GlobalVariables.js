@@ -1,9 +1,10 @@
 export const body = document.querySelector('body');
 export const themeButton = document.querySelector('#card');
 export const solveButton = document.querySelector('#solve_button');
+export const clearButton = document.querySelector('#clear_button');
 export const allButtons = document.querySelectorAll('button');
 export const sudokuContainer = document.getElementById('sudoku_container');
-export const errorMessageDiv = document.querySelector('error_message');
+export const errorMessageDiv = document.querySelector('#error_message');
 export const descriptionDiv = document.querySelector('#description');
 export const puzzleArray = [];
 export var NumberType;
