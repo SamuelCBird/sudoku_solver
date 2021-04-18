@@ -2,6 +2,7 @@ export const body = document.querySelector('body');
 export const themeButton = document.querySelector('#card');
 export const solveButton = document.querySelector('#solve_button');
 export const clearButton = document.querySelector('#clear_button');
+export const clearButtonTextElem = document.querySelector("#clear_button > span");
 export const allButtons = document.querySelectorAll('button');
 export const sudokuContainer = document.getElementById('sudoku_container');
 export const errorMessageDiv = document.querySelector('#error_message');

@@ -1,5 +1,7 @@
 import { SolvePuzzle } from "../classes/SolvePuzzle.js";
-import { errorMessageDiv, NumberType, puzzleArray } from "../GlobalVariables.js"
+import { clearButton, clearButtonTextElem, errorMessageDiv, NumberType, puzzleArray } from "../GlobalVariables.js"
+
+export let theSolution: SolvePuzzle;
 
 export const handleSolution = () => {
     for (let i = 0; i < puzzleArray.length; i++) {
@@ -21,6 +23,7 @@ export const handleSolution = () => {
         }
     })
 
-    const solution = new SolvePuzzle(puzzleArray);
+    theSolution = new SolvePuzzle(puzzleArray);
+    clearButtonTextElem.innerText = 'stop';
     // possibly use worker to add counter and time solution
 }

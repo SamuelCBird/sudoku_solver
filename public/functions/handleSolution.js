@@ -1,5 +1,6 @@
 import { SolvePuzzle } from "../classes/SolvePuzzle.js";
-import { errorMessageDiv, NumberType, puzzleArray } from "../GlobalVariables.js";
+import { clearButtonTextElem, errorMessageDiv, NumberType, puzzleArray } from "../GlobalVariables.js";
+export let theSolution;
 export const handleSolution = () => {
     for (let i = 0; i < puzzleArray.length; i++) {
         if (puzzleArray[i][0].classList.contains('invalid')) {
@@ -19,6 +20,7 @@ export const handleSolution = () => {
             square[0].classList.add('boldify');
         }
     });
-    const solution = new SolvePuzzle(puzzleArray);
+    theSolution = new SolvePuzzle(puzzleArray);
+    clearButtonTextElem.innerText = 'stop';
     // possibly use worker to add counter and time solution
 };

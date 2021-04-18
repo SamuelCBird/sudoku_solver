@@ -1,10 +1,9 @@
 import { PuzzleArrayType, PuzzleSquare, NumberType } from "../GlobalVariables.js";
 
 export class SolvePuzzle {
-    constructor (private puzzle: PuzzleArrayType) {
-        console.time('sudoku');
+    constructor (private puzzle: PuzzleArrayType, public isSolving: boolean = true) {
         this.startSolution();
-        console.timeEnd('sudoku');
+        isSolving = false;
     };
 
     checkHorizontalValidity(value: HTMLDivElement, index: number): boolean {

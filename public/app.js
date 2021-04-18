@@ -1,5 +1,5 @@
 import { clearBoard } from './functions/clearBoard.js';
-import { handleSolution } from './functions/handleSolution.js';
+import { handleSolution, theSolution } from './functions/handleSolution.js';
 import { toggleTheme } from './functions/toggleTheme.js';
 import { themeButton, sudokuContainer, NumberType, solveButton, puzzleArray, clearButton } from './GlobalVariables.js';
 // themeCheckbox.addEventListener('click', toggleTheme);
@@ -9,7 +9,11 @@ themeButton.addEventListener('click', () => {
     toggleTheme();
 });
 clearButton.addEventListener('click', () => {
-    clearBoard(puzzleArray);
+    if (!theSolution.isSolving) {
+        clearBoard(puzzleArray);
+    }
+    else {
+    }
 });
 // create divs
 for (let i = 0; i < 81; i++) {

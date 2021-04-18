@@ -1,10 +1,10 @@
 import { NumberType } from "../GlobalVariables.js";
 export class SolvePuzzle {
-    constructor(puzzle) {
+    constructor(puzzle, isSolving = true) {
         this.puzzle = puzzle;
-        console.time('sudoku');
+        this.isSolving = isSolving;
         this.startSolution();
-        console.timeEnd('sudoku');
+        isSolving = false;
     }
     ;
     checkHorizontalValidity(value, index) {
