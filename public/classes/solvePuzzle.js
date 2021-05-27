@@ -1,8 +1,11 @@
-import { NumberType } from "../GlobalVariables.js";
+import { NumberType, toggleClearButtonText } from "../GlobalVariables.js";
 export class SolvePuzzle {
-    constructor(puzzle, isSolving = true) {
+    constructor(puzzle, stopper = false, isSolving = true) {
         this.puzzle = puzzle;
+        this.stopper = stopper;
         this.isSolving = isSolving;
+        toggleClearButtonText();
+        // clear function can access stop and make it true to stop loop
         this.startSolution();
         isSolving = false;
     }
@@ -87,8 +90,10 @@ export class SolvePuzzle {
         let index = 0;
         let previousIndex;
         let intervalLoop = setInterval(() => {
-            if (index >= 80) {
+            // check for stopping
+            if (index >= 80 || this.stopper) {
                 clearInterval(intervalLoop);
+                toggleClearButtonText();
             }
             if (this.squareIsEditable(this.puzzle[index])) {
                 if (this.insertNumber(this.puzzle[index][0], index)) {

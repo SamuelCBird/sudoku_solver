@@ -1,7 +1,10 @@
-import { PuzzleArrayType, PuzzleSquare, NumberType } from "../GlobalVariables.js";
+import { PuzzleArrayType, PuzzleSquare, NumberType, toggleClearButtonText } from "../GlobalVariables.js";
+
 
 export class SolvePuzzle {
-    constructor (private puzzle: PuzzleArrayType, public isSolving: boolean = true) {
+    constructor (private puzzle: PuzzleArrayType, public stopper: boolean = false, public isSolving: boolean = true) {
+        toggleClearButtonText();
+        // clear function can access stop and make it true to stop loop
         this.startSolution();
         isSolving = false;
     };
@@ -91,9 +94,12 @@ export class SolvePuzzle {
         let previousIndex: number;
         let intervalLoop = setInterval(() => {
 
-            if (index >= 80) {
+            // check for stopping
+            if (index >= 80 || this.stopper) {
                 clearInterval(intervalLoop);
+                toggleClearButtonText();
             }
+
             if (this.squareIsEditable(this.puzzle[index])) {
                 if (this.insertNumber(this.puzzle[index][0], index)) {
                     previousIndex = index;

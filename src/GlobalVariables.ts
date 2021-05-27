@@ -8,6 +8,14 @@ export const sudokuContainer = document.getElementById('sudoku_container') as HT
 export const errorMessageDiv = document.querySelector('#error_message') as HTMLDivElement;
 export const descriptionDiv = document.querySelector('#description') as HTMLDivElement;
 
+export const toggleClearButtonText = () => {
+    if (clearButtonTextElem.innerText === 'clear') {
+        clearButtonTextElem.innerText = 'stop';
+    } else {
+        clearButtonTextElem.innerText = 'clear';
+    }
+}
+
 // array to hold sudoku divs, NumberType to hold whether number was preset or not
 export type PuzzleArrayType = Array<[HTMLDivElement, NumberType]>;
 export type PuzzleSquare = [HTMLDivElement, NumberType];

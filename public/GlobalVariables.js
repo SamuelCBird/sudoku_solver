@@ -7,6 +7,14 @@ export const allButtons = document.querySelectorAll('button');
 export const sudokuContainer = document.getElementById('sudoku_container');
 export const errorMessageDiv = document.querySelector('#error_message');
 export const descriptionDiv = document.querySelector('#description');
+export const toggleClearButtonText = () => {
+    if (clearButtonTextElem.innerText === 'clear') {
+        clearButtonTextElem.innerText = 'stop';
+    }
+    else {
+        clearButtonTextElem.innerText = 'clear';
+    }
+};
 export const puzzleArray = [];
 export var NumberType;
 (function (NumberType) {
