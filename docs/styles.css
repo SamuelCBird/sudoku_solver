@@ -99,12 +99,12 @@ header div {
     backface-visibility: hidden;
 }
 #card_front {
-    background: url(/public/images/Moon.svg);
+    background: url(/docs/images/Moon.svg);
     background-repeat: no-repeat;
     background-position: center;
 }
 #card_back {
-    background: url(/public/images/Sun.svg);
+    background: url(/docs/images/Sun.svg);
     background-repeat: no-repeat;
     background-position: center;
     transform: rotateY(180deg);
