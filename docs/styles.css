@@ -97,6 +97,7 @@ header div {
     height: 100%;
     width: 100%;
     backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
 }
 #card_front {
     background: url(./images/Moon.svg);
@@ -111,6 +112,7 @@ header div {
 }
 .isflipped {
     transform: rotateY(180deg);
+    -webkit-transform: rotateY(180deg);
 }
 header svg {
     position: relative;
