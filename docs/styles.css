@@ -64,6 +64,12 @@ h2 {
 p {
     font-weight: 300;
 }
+a {
+    color: var(--dark_grey);
+}
+.dark {
+    color: var(--light_grey);
+}
 header {
     position: relative;
     height: 80px;
@@ -279,6 +285,9 @@ footer p {
     }
     p {
         font-size: 0.8rem;
+    }
+    #card {
+        width: 30px;
     }
 }
 @media only screen and (max-width: 550px) {

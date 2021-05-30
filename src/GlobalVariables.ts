@@ -4,6 +4,7 @@ export const solveButton = document.querySelector('#solve_button') as HTMLButton
 export const clearButton = document.querySelector('#clear_button') as HTMLButtonElement;
 export const clearButtonTextElem = document.querySelector("#clear_button > span") as HTMLSpanElement;
 export const allButtons = document.querySelectorAll('button');
+export const allBodyLinks = document.querySelectorAll('a.link');
 export const sudokuContainer = document.getElementById('sudoku_container') as HTMLDivElement;
 export const errorMessageDiv = document.querySelector('#error_message') as HTMLDivElement;
 export const descriptionDiv = document.querySelector('#description') as HTMLDivElement;

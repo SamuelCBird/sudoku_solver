@@ -1,4 +1,4 @@
-import { body, sudokuContainer, allButtons, descriptionDiv } from '../GlobalVariables.js'
+import { body, sudokuContainer, allButtons, descriptionDiv, allBodyLinks } from '../GlobalVariables.js'
 
 export const toggleTheme = (): void => {
     const buttons = document.querySelectorAll('button');
@@ -16,4 +16,6 @@ export const toggleTheme = (): void => {
     // description
     descriptionDiv.classList.toggle('light_mode');
     descriptionDiv.classList.toggle('dark_mode');
+    // body links
+    allBodyLinks.forEach(link => link.classList.toggle('dark'));
 }
